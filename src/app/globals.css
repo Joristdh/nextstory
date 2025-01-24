@@ -1,4 +1,4 @@
-@tailwind base;
+/* @tailwind base; */
 @tailwind components;
 @tailwind utilities;
 
@@ -8,20 +8,27 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+a {
+  text-decoration: none;
+  font-weight: 900;
+  color: unset;
+
+  &:visited {
+    color: unset;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: 235, 235, 235;
+    --background-start-rgb: 35, 36, 40;
+    --background-end-rgb: 10, 10, 10;
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }

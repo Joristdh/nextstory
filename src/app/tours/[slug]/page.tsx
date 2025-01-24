@@ -11,6 +11,6 @@ const fetchTourPage = async (slug: string) => (await api.getStory(`tours/${slug}
     .data.story
 
 export default async (props: any) => {
-    const story = await fetchTourPage(props.params.slug)
+    const story = await fetchTourPage((await props.params).slug)
     return <StoryblokStory story={story} />;
 }

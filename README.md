@@ -1,4 +1,5 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next
+This project contains multiple routes, but for the pathname prototype, only the demo route is relevant. For QoL there does exist a `/products` page in Next, but this can be removed and does not exist as a story in Storyblok.
 
 ## Getting Started
 
@@ -16,21 +17,25 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Storyblok
+This is all based on the free plan on Storyblok. To try it with your own instance, replace the `accesToken` in `storyblok.ts`. However, it should also work using my instance.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Blok structure
+This prototype filters the bloks by the parent folder (adhering the the pathname). To function correctly, all products have to be of `content-type: product` and reside in the `Products` folder in Storyblok.
 
-## Learn More
+## Generate types
+Generate the types from the Storyblok components with:
+```bash
+npm run types
+```
 
-To learn more about Next.js, take a look at the following resources:
+Make sure the replace the mentions of the spaceId if you've switched to another instance.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Visual editor 
+An https proxy is needed to use the visual editor. This can be achieved with `mkcert` (with `nss` for Firefox support) and the following commands (in the project folder):
+```bash
+mkcert -install
+mkcert localhost
+npm install -g local-ssl-proxy
+local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem
+```

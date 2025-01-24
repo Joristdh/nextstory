@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "types": "storyblok pull-components --space 322260 && storyblok generate-typescript-typedefs --sourceFilePaths ./components.322260.json --destinationFilePath ./src/types/components.d.ts && rm ./components.322260.json"
   },
   "dependencies": {
     "next": "^15.1.6",

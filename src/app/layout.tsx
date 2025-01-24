@@ -1,11 +1,10 @@
-import { apiPlugin, storyblokInit } from "@storyblok/react/rsc"
+import { StoryblokProvider } from "@/components/StoryblokProvider"
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Link from "next/link"
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
-
-
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,8 +17,18 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <StoryblokProvider>
+      <html lang="en" className="min-h-full">
+        <body className={inter.className}>
+          <header>
+            <nav className="container mx-auto px-4 w-full py-8 flex justify-between">
+              <Link href={"/"}>Home</Link>
+              <Link href={"/products"}>Demo</Link>
+              <Link href={"/tours"}>Tours</Link>
+            </nav>
+          </header>{children}
+        </body>
+      </html>
+    </StoryblokProvider>
   )
 }
